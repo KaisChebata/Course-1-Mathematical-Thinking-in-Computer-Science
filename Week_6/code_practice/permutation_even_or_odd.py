@@ -30,32 +30,6 @@ while (s<n){
 }
 '''
 
-# def is_permutation_even(permutaion):
-#     sign = 0 # sign = the number of transposition mod 2
-#     counter = 0
-#     s = 0 # first s elements are at right places
-#     n = len(permutaion)
-
-#     while s < n:
-#         u = s
-#         t = u
-#         minmal_index = t
-
-#         while u < n - 1:
-#             u += 1
-#             if permutaion[u] < permutaion[t]:
-#                 t = u
-#         if t != minmal_index:
-#             tmp = permutaion[s]
-#             permutaion[s] = permutaion[t]
-#             permutaion[t] = tmp
-#             sign = 1 - sign
-#             counter += 1
-#         s += 1
-#     return permutaion, sign, counter
-
-
-    
 def classify_permutation(arr):
     sign = 0 # sign is the number of transposition mod 2
     counter = 0 # the number of tranposition made, at begining is 0
@@ -65,13 +39,13 @@ def classify_permutation(arr):
     while s < n:
         u = s
         t = u # arr[t] is minimal among arr[s] .. a[u]
-        minmal_index = t
+        minimal_index = t
 
         while u < n - 1:
             u += 1
             if arr[u] < arr[t]:
                 t = u
-        if t != minmal_index:
+        if t != minimal_index:
             tmp = arr[s]
             arr[s] = arr[t]
             arr[t] = tmp
@@ -85,6 +59,8 @@ def classify_permutation(arr):
 # I:
 # 5 2 3 1
 # 1 2 3 5: 1
+# ----------
+# Transposition = 1
 
 # II: 
 # 8 13 1 9 2 5 3
@@ -103,8 +79,20 @@ def classify_permutation(arr):
 # ------------------
 # Transpositions = 2
 
+# IV:
+# 4 2 1 8 5 3 6 7
+# 1 2 4 8 5 3 6 7: 1
+# 1 2 3 8 5 4 6 7: 2
+# 1 2 3 4 5 8 6 7: 3
+# 1 2 3 4 5 6 8 7: 4
+# 1 2 3 4 5 6 7 8: 5
+# ------------------
+# Transpositions = 5
+
 print('-' * 80)
 print('Permutation', '|', 'Sign' , '|', '# Transpositions')
 print(classify_permutation([5, 2, 3, 1]))
 print(classify_permutation([8, 13, 1, 9, 2, 5, 3]))
 print(classify_permutation([5, 3, 2, 1]))
+print(classify_permutation([4, 2, 1, 8, 5, 3, 6, 7]))
+print(classify_permutation([4, 3 ,2, 1]))
