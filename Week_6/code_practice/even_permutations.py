@@ -32,12 +32,14 @@ def is_even_permutation(permutaion):
         even_counter = 0
         for i in range(0, len(permutaion)):
             for j in range(i + 1, len(permutaion)):
-                if permutaion[i] > permutaion[j]:
+                if permutaion[i] > permutaion[j] and permutaion[j] > 0:
                     even_counter += 1
         
         return True if even_counter % 2 == 0 else False
     
     return False
 
+print('-' * 80)
 print(is_even_permutation([4, 3, 2, 1]))
 print(is_even_permutation([0,3,2,4,5,6,7,1,9,8]))
+print(is_even_permutation([1, 2, 3, 4, 5, 6, 7, 8, 13, 9, 11, 12, 10, 14, 15, 0]))
